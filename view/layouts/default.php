@@ -13,9 +13,6 @@ $currentuser = $view->getVariable("currentusername");
     <title><?= $view->getVariable("title", "no title") ?></title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="css/style.css" type="text/css">
-    <!-- enable ji18n() javascript function to translate inside your scripts -->
-    <script src="index.php?controller=language&amp;action=i18njs">
-    </script>
     <?= $view->getFragment("css") ?>
     <?= $view->getFragment("javascript") ?>
 </head>
@@ -28,12 +25,12 @@ $currentuser = $view->getVariable("currentusername");
                 <li><a href="index.php?controller=posts&amp;action=index">Posts</a></li>
 
                 <?php if (isset($currentuser)) : ?>
-                    <li><?= sprintf(i18n("Hello %s"), $currentuser) ?>
+                    <li><?= sprintf("Hello %s", $currentuser) ?>
                         <a href="index.php?controller=users&amp;action=logout">(Logout)</a>
                     </li>
 
                 <?php else : ?>
-                    <li><a href="index.php?controller=users&amp;action=login"><?= i18n("Login") ?></a></li>
+                    <li><a href="index.php?controller=users&amp;action=login">Login</a></li>
                 <?php endif ?>
             </ul>
         </nav>
@@ -48,9 +45,6 @@ $currentuser = $view->getVariable("currentusername");
     </main>
 
     <footer>
-        <?php
-        include(__DIR__ . "/language_select.php");
-        ?>
     </footer>
 
 </body>

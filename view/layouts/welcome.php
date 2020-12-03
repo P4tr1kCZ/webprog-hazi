@@ -1,6 +1,7 @@
 <?php
 
 require_once(__DIR__ . "/../../utils/ViewManager.php");
+
 $view = ViewManager::getInstance();
 
 ?>
@@ -17,7 +18,7 @@ $view = ViewManager::getInstance();
 
 <body>
     <header>
-        <h1><?= i18n("Welcome to the Blog App!") ?></h1>
+        <h1>Welcome to the Blog App!</h1>
     </header>
     <main>
         <div id="flash">
@@ -26,9 +27,6 @@ $view = ViewManager::getInstance();
         <?= $view->getFragment(ViewManager::DEFAULT_FRAGMENT) ?>
     </main>
     <footer>
-        <?php
-        include(__DIR__ . "/language_select.php");
-        ?>
     </footer>
 </body>
 

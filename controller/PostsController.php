@@ -2,7 +2,6 @@
 
 require_once(__DIR__ . "/ControllerBase.php");
 require_once(__DIR__ . "/../db/DbPosts.php");
-require_once(__DIR__ . "/../utils/Localization.php");
 
 require_once(__DIR__ . "/../model/Comment.php");
 require_once(__DIR__ . "/../model/Post.php");
@@ -19,7 +18,7 @@ class PostsController extends ControllerBase
         $this->dbPosts = new DbPosts();
     }
 
-    public function getAll()
+    public function index()
     {
         $posts = $this->dbPosts->findAll();
         $this->view->setVariable("posts", $posts);
@@ -60,7 +59,7 @@ class PostsController extends ControllerBase
             try {
                 $post->validateBeforeCreate();
                 $this->dbPosts->insert($post);
-                $this->view->setFlash(sprintf(i18n("Post \"%s\" successfully added."), $post->getTitle()));
+                $this->view->setFlash(sprintf("Post \"%s\" successfully added."), $post->getTitle());
                 $this->view->redirect("posts", "index");
             } catch (ValidationException $ex) {
                 $errors = $ex->getErrors();
@@ -99,7 +98,7 @@ class PostsController extends ControllerBase
             try {
                 $post->validateBeforeUpdate();
                 $this->dbPosts->update($post);
-                $this->view->setFlash(sprintf(i18n("Post \"%s\" successfully updated."), $post->getTitle()));
+                $this->view->setFlash(sprintf("Post \"%s\" successfully updated."), $post->getTitle());
                 $this->view->redirect("posts", "index");
             } catch (ValidationException $ex) {
                 $errors = $ex->getErrors();
@@ -132,7 +131,7 @@ class PostsController extends ControllerBase
         }
 
         $this->dbPosts->delete($post);
-        $this->view->setFlash(sprintf(i18n("Post \"%s\" successfully deleted."), $post->getTitle()));
+        $this->view->setFlash(sprintf("Post \"%s\" successfully deleted."), $post->getTitle());
         $this->view->redirect("posts", "index");
     }
 }

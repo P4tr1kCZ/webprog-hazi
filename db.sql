@@ -26,5 +26,3 @@ create table comments (
 	foreign key (author) references users(username),
 	foreign key (post) references posts(id) on delete cascade
 ) ENGINE=INNODB DEFAULT CHARACTER SET = utf8;
-
-grant all privileges on webprogdb.* to root@localhost identified by "pass";

@@ -10,13 +10,13 @@ $currentUser = $view->getVariable("currentusername");
 $view->setVariable("title", "Posts");
 ?>
 
-<h1><?= i18n("Posts") ?></h1>
+<h1>Posts</h1>
 
 <table>
     <tr>
-        <th><?= i18n("Title") ?></th>
-        <th><?= i18n("Author") ?></th>
-        <th><?= i18n("Actions") ?></th>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Actions</th>
     </tr>
 
     <?php foreach ($posts as $post) : ?>
@@ -37,13 +37,13 @@ $view->setVariable("title", "Posts");
                         <input type="hidden" name="id" value="<?= $post->getId() ?>">
 
                         <a href="#" onclick="
-				if (confirm('<?= i18n("are you sure?") ?>')) {
+				if (confirm('<?= "are you sure?" ?>')) {
 					document.getElementById('delete_post_<?= $post->getId() ?>').submit()
-				}"><?= i18n("Delete") ?></a>
+				}">Delete</a>
 
                     </form>
                     &nbsp;
-                    <a href="index.php?controller=posts&amp;action=edit&amp;id=<?= $post->getId() ?>"><?= i18n("Edit") ?></a>
+                    <a href="index.php?controller=posts&amp;action=edit&amp;id=<?= $post->getId() ?>">Edit</a>
 
                 <?php endif; ?>
 
@@ -52,5 +52,5 @@ $view->setVariable("title", "Posts");
     <?php endforeach; ?>
 </table>
 <?php if (isset($currentuser)) : ?>
-    <a href="index.php?controller=posts&amp;action=add"><?= i18n("Create post") ?></a>
+    <a href="index.php?controller=posts&amp;action=add">Create post</a>
 <?php endif; ?>

@@ -1,19 +1,19 @@
 <?php
 
-require_once(__DIR__ . "/../../core/ViewManager.php");
+require_once(__DIR__ . "/../../utils/ViewManager.php");
 
 $view = ViewManager::getInstance();
 $errors = $view->getVariable("errors");
 $user = $view->getVariable("user");
 $view->setVariable("title", "Register");
 ?>
-<h1><?= i18n("Register") ?></h1>
+<h1>Register</h1>
 <form action="index.php?controller=users&amp;action=register" method="POST">
-    <?= i18n("Username") ?>: <input type="text" name="username" value="<?= $user->getUsername() ?>">
-    <?= isset($errors["username"]) ? i18n($errors["username"]) : "" ?><br>
+    Username: <input type="text" name="username" value="<?= $user->getUsername() ?>">
+    <?= isset($errors["username"]) ? $errors["username"] : "" ?><br>
 
-    <?= i18n("Password") ?>: <input type="password" name="passwd" value="">
-    <?= isset($errors["passwd"]) ? i18n($errors["passwd"]) : "" ?><br>
+    Password: <input type="password" name="password" value="">
+    <?= isset($errors[""]) ? $errors["password"] : "" ?><br>
 
-    <input type="submit" value="<?= i18n("Register") ?>">
+    <input type="submit" value="<?= "Register" ?>">
 </form>
