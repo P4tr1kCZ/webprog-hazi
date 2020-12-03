@@ -1,5 +1,7 @@
 <?php
 
+require_once(__DIR__ . "/../../utils/ViewManager.php");
+
 $view = ViewManager::getInstance();
 $currentuser = $view->getVariable("currentusername");
 
@@ -46,9 +48,9 @@ $currentuser = $view->getVariable("currentusername");
     </main>
 
     <footer>
-        <!--<?php
-            include(__DIR__ . "/language_select_element.php");
-            ?>-->
+        <?php
+        include(__DIR__ . "/language_select.php");
+        ?>
     </footer>
 
 </body>
