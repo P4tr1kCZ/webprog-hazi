@@ -1,5 +1,7 @@
 <?php
 
+require_once(__DIR__ . "/../utils/ValidationException..php");
+
 class Post
 {
     private $id;
@@ -60,5 +62,43 @@ class Post
     public function setComments(array $comments)
     {
         $this->comments = $comments;
+    }
+
+    public function validateBeforeCreate()
+    {
+        $errors = array();
+        if (strlen(trim($this->title)) == 0) {
+            $errors["title"] = "title is mandatory";
+        }
+        if (strlen(trim($this->content)) == 0) {
+            $errors["content"] = "content is mandatory";
+        }
+        if ($this->author == NULL) {
+            $errors["author"] = "author is mandatory";
+        }
+
+        if (sizeof($errors) > 0) {
+            throw new ValidationException($errors, "post is not valid");
+        }
+    }
+
+    public function validateBeforeUpdate()
+    {
+        $errors = array();
+
+        if (!isset($this->id)) {
+            $errors["id"] = "id is mandatory";
+        }
+
+        try {
+            $this->validateBeforeCreate();
+        } catch (ValidationException $ex) {
+            foreach ($ex->getErrors() as $key => $error) {
+                $errors[$key] = $error;
+            }
+        }
+        if (sizeof($errors) > 0) {
+            throw new ValidationException($errors, "post is not valid");
+        }
     }
 }

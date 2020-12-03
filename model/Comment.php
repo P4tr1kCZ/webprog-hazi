@@ -1,5 +1,7 @@
 <?php
 
+require_once(__DIR__ . "/../utils/ValidationException..php");
+
 class Comment
 {
     private $id;
@@ -48,5 +50,24 @@ class Comment
     public function setPost(Post $post)
     {
         $this->post = $post;
+    }
+
+    public function validateBeforeCreate()
+    {
+        $errors = array();
+
+        if (strlen(trim($this->content)) < 2) {
+            $errors["content"] = "content is mandatory";
+        }
+        if ($this->author == NULL) {
+            $errors["author"] = "author is mandatory";
+        }
+        if ($this->post == NULL) {
+            $errors["post"] = "post is mandatory";
+        }
+
+        if (sizeof($errors) > 0) {
+            throw new ValidationException($errors, "comment is not valid");
+        }
     }
 }
