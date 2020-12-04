@@ -20,6 +20,7 @@ class UsersController extends ControllerBase
             if ($this->dbUsers->isValidUser($_POST["username"], $_POST["password"])) {
                 $_SESSION["currentuser"] = $_POST["username"];
                 $this->view->redirect("posts", "index");
+                echo $_POST["username"];
             } else {
                 $errors = array();
                 $errors["general"] = "Username is not valid";
