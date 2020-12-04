@@ -86,11 +86,9 @@ class URIDispatcher
 
     private function match_request($http_method, $url_pattern, &$matched_parameters = array())
     {
-        $path = substr(
-            $_SERVER['REQUEST_URI'],
-            strlen($_SERVER['PHP_SELF']) - strlen(basename($_SERVER['PHP_SELF'])) - 1
-        );
+        $path = explode('/rest/index.php', $_SERVER['REQUEST_URI'])[1];
         $path = parse_url($path)['path'];
+
         if (
             $_SERVER['REQUEST_METHOD'] != strtoupper($http_method) &&
             ($this->cors == false || $_SERVER['REQUEST_METHOD'] != 'OPTIONS')
@@ -121,4 +119,15 @@ class URIDispatcher
         }
         return true;
     }
+}
+?>
+<?php
+function console_log($output, $with_script_tags = true)
+{
+    $js_code = 'console.log(' . json_encode($output, JSON_HEX_TAG) .
+        ');';
+    if ($with_script_tags) {
+        $js_code = '<script>' . $js_code . '</script>';
+    }
+    echo $js_code;
 }
