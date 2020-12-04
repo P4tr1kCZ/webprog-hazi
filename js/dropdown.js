@@ -3,7 +3,6 @@ $(document).ready(function() {
         method: "GET",
         url:"/rest/index.php/menus/parents",
         success: (res) => {
-            console.log(res);
             $('#dropdownlist').empty();
             res.forEach(element => {
                 $.ajax({

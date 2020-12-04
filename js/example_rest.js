@@ -6,7 +6,6 @@ $(document).ready(function() {
         success: (res) => {
             $("#userstable").empty();
             res.forEach(user => {
-                console.log(user);
                 $("#userstable").append(
                     `<tr>
                         <th scope="row">${user.id}</th>

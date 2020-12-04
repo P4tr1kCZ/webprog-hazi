@@ -26,6 +26,19 @@ class DbUsers
         return $users;
     }
 
+    public function findByName($username)
+    {
+        $query = $this->db->prepare("SELECT username, role FROM users WHERE username=?");
+        $query->execute(array($username));
+        $user = $query->fetch(PDO::FETCH_ASSOC);
+
+        if ($user != null) {
+            return new User($user["username"], "", $user["role"]);
+        } else {
+            return NULL;
+        }
+    }
+
     public function insert($user)
     {
         $query = $this->db->prepare("INSERT INTO users values (?,?,?)");

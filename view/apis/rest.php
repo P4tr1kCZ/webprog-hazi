@@ -25,7 +25,7 @@ $errors = $view->getVariable("errors");
         </div>
         <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
             <label for="exampleFormControlTextarea1">Result in JSON</label>
-            <textarea id="jsonresult" class="form-control" id="exampleFormControlTextarea1" rows="20" disabled></textarea>
+            <textarea id="jsonresult" class="form-control" id="exampleFormControlTextarea1" rows="20" readonly></textarea>
         </div>
     </div>
 </div>
