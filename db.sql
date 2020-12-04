@@ -47,4 +47,5 @@ VALUES
   (3, "API", NULL, "api", "index"), 
   (4, "REST", 3, "api", "rest"),
   (5, "SOAP", 3, "api", "soap"),
-  (6, "Logout", NULL, "users", "logout");
+  (6, "Drawings", NULL, "oop", "index"),
+  (7, "Logout", NULL, "users", "logout");
