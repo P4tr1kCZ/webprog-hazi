@@ -21,7 +21,7 @@ class DbMenus
         $menus = array();
 
         foreach ($menus_db as $menu) {
-            array_push($menus, new Menu($menu["id"], $menu["name"], $menu["parentid"]));
+            array_push($menus, new Menu($menu["id"], $menu["name"], $menu["parentid"], $menu["controller"], $menu["action"]));
         }
 
         return $menus;
@@ -34,7 +34,7 @@ class DbMenus
         $menus_db = $query->fetchAll(PDO::FETCH_ASSOC);
         $menus = array();
         foreach ($menus_db as $menu) {
-            array_push($menus, new Menu($menu["id"], $menu["name"], $menu["parentid"]));
+            array_push($menus, new Menu($menu["id"], $menu["name"], $menu["parentid"], $menu["controller"], $menu["action"]));
         }
 
         return $menus;
@@ -42,11 +42,12 @@ class DbMenus
 
     public function getParents()
     {
-        $query = $this->db->prepare("SELECT * FROM menus WHERE parentid=NULL");
+        $query = $this->db->prepare("SELECT * FROM menus WHERE parentid is null");
+        $query->execute();
         $menus_db = $query->fetchAll(PDO::FETCH_ASSOC);
         $menus = array();
         foreach ($menus_db as $menu) {
-            array_push($menus, new Menu($menu["id"], $menu["name"], $menu["parentid"]));
+            array_push($menus, new Menu($menu["id"], $menu["name"], $menu["parentid"], $menu["controller"], $menu["action"]));
         }
 
         return $menus;
@@ -62,7 +63,9 @@ class DbMenus
             return new Menu(
                 $menu["id"],
                 $menu["name"],
-                $menu["parentid"]
+                $menu["parentid"],
+                $menu["controller"],
+                $menu["action"]
             );
         } else {
             return NULL;
@@ -79,10 +82,22 @@ class DbMenus
             return new Menu(
                 $menu["id"],
                 $menu["name"],
-                $menu["parentid"]
+                $menu["parentid"],
+                $menu["controller"],
+                $menu["action"]
             );
         } else {
             return NULL;
         }
     }
+}
+
+function console_log($output, $with_script_tags = true)
+{
+    $js_code = 'console.log(' . json_encode($output, JSON_HEX_TAG) .
+        ');';
+    if ($with_script_tags) {
+        $js_code = '<script>' . $js_code . '</script>';
+    }
+    echo $js_code;
 }

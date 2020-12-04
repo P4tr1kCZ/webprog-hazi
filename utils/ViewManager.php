@@ -6,7 +6,7 @@ class ViewManager
     private $fragmentContents = array();
     private $variables = array();
     private $currentFragment = self::DEFAULT_FRAGMENT;
-    private $layout = "default";
+    private $layout = "layout";
 
     private function __construct()
     {

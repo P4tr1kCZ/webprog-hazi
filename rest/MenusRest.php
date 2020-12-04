@@ -25,6 +25,8 @@ class MenusRest extends Rest
                 "id" => $menu->getId(),
                 "name" => $menu->getName(),
                 "parentid" => $menu->getParentId(),
+                "controller" => $menu->getController(),
+                "action" => $menu->getAction(),
             ));
         }
 
@@ -42,6 +44,8 @@ class MenusRest extends Rest
                 "id" => $menu->getId(),
                 "name" => $menu->getName(),
                 "parentid" => $menu->getParentId(),
+                "controller" => $menu->getController(),
+                "action" => $menu->getAction(),
             ));
         }
 
@@ -60,6 +64,8 @@ class MenusRest extends Rest
                 "id" => $menu->getId(),
                 "name" => $menu->getName(),
                 "parentid" => $menu->getParentId(),
+                "controller" => $menu->getController(),
+                "action" => $menu->getAction(),
             ));
         }
 
@@ -80,8 +86,10 @@ class MenusRest extends Rest
 
         $menu_array = array(
             "id" => $menu->getId(),
-            "title" => $menu->getName(),
-            "content" => $menu->getParentId(),
+            "name" => $menu->getName(),
+            "parentid" => $menu->getParentId(),
+            "controller" => $menu->getController(),
+            "action" => $menu->getAction(),
         );
 
         header($_SERVER['SERVER_PROTOCOL'] . ' 200 Ok');

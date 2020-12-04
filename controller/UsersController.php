@@ -14,6 +14,11 @@ class UsersController extends ControllerBase
         $this->dbUsers = new DbUsers();
     }
 
+    public function index()
+    {
+        $this->view->render("users", "index");
+    }
+
     public function login()
     {
         if (isset($_POST["username"])) {

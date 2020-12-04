@@ -29,20 +29,3 @@ $errors = $view->getVariable("errors");
         </div>
     </div>
 </div>
-
-<script>
-    function myFunction() {
-        console.log($("#username").val());
-        console.log($("#password").val());
-        $.ajax({
-            method: "POST",
-            url: "../../controller/UsersController/login",
-            data: {
-                username: $("#username").val(),
-                password: $("#password").val()
-            },
-            success: function() {},
-            error: function() {}
-        })
-    }
-</script>
