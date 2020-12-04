@@ -24,7 +24,7 @@ class DbPosts
 
         foreach ($posts_db as $post) {
             $author = new User($post["username"]);
-            array_push($posts, new Post($post["id"], $post["title"], $post["content"], $author));
+            array_push($posts, new Post($post["id"], $post["title"], $post["content"], $post["created"], $author));
         }
 
         return $posts;
@@ -41,6 +41,7 @@ class DbPosts
                 $post["id"],
                 $post["title"],
                 $post["content"],
+                $post["created"],
                 new User($post["author"])
             );
         } else {
@@ -54,11 +55,13 @@ class DbPosts
 			P.id as 'post.id',
 			P.title as 'post.title',
 			P.content as 'post.content',
+            P.created as 'post.created',
 			P.author as 'post.author',
 			C.id as 'comment.id',
 			C.content as 'comment.content',
 			C.post as 'comment.post',
-			C.author as 'comment.author'
+			C.author as 'comment.author',
+            C.created as 'comment.created'
 
 			FROM posts P LEFT OUTER JOIN comments C
 			ON P.id = C.post
@@ -73,14 +76,17 @@ class DbPosts
                 $post_wt_comments[0]["post.id"],
                 $post_wt_comments[0]["post.title"],
                 $post_wt_comments[0]["post.content"],
+                $post_wt_comments[0]["post.created"],
                 new User($post_wt_comments[0]["post.author"])
             );
+
             $comments_array = array();
             if ($post_wt_comments[0]["comment.id"] != null) {
                 foreach ($post_wt_comments as $comment) {
                     $comment = new Comment(
                         $comment["comment.id"],
                         $comment["comment.content"],
+                        $comment["comment.created"],
                         new User($comment["comment.author"]),
                         $post
                     );
@@ -97,8 +103,8 @@ class DbPosts
 
     public function insert(Post $post)
     {
-        $query = $this->db->prepare("INSERT INTO posts(title, content, author) values (?,?,?)");
-        $query->execute(array($post->getTitle(), $post->getContent(), $post->getAuthor()->getUsername()));
+        $query = $this->db->prepare("INSERT INTO posts(title, content, author, created) values (?,?,?,?)");
+        $query->execute(array($post->getTitle(), $post->getContent(), $post->getAuthor()->getUsername(), $post->getCreated()));
         return $this->db->lastInsertId();
     }
 

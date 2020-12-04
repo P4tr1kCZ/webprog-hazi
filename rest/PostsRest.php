@@ -1,6 +1,6 @@
 <?php
 
-require_once(__DIR__ . "/BaseRest.php");
+require_once(__DIR__ . "/Rest.php");
 
 require_once(__DIR__ . "/../model/User.php");
 require_once(__DIR__ . "/../model/Post.php");
@@ -184,9 +184,9 @@ class PostsRest extends Rest
 
 $postsRest = new PostsRest();
 URIDispatcher::getInstance()
-    ->map("GET",    "/post", array($postRest, "getPosts"))
-    ->map("GET",    "/post/$1", array($postRest, "getPost"))
-    ->map("POST", "/post", array($postRest, "createPost"))
-    ->map("POST", "/post/$1/comment", array($postRest, "createComment"))
-    ->map("PUT",    "/post/$1", array($postRest, "updatePost"))
-    ->map("DELETE", "/post/$1", array($postRest, "deletePost"));
+    ->map("GET",    "/posts", array($postsRest, "getPosts"))
+    ->map("GET",    "/posts/$1", array($postsRest, "getPost"))
+    ->map("POST", "/posts", array($postsRest, "createPost"))
+    ->map("POST", "/posts/$1/comment", array($postsRest, "createComment"))
+    ->map("PUT",    "/posts/$1", array($postsRest, "updatePost"))
+    ->map("DELETE", "/posts/$1", array($postsRest, "deletePost"));

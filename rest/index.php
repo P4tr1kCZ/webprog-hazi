@@ -10,10 +10,12 @@ try {
     }
 
     $dispatcher = URIDispatcher::getInstance();
-    $dispatcher->enableCORS('*', 'origin, content-type, accept, authorization');
-    $request = $dispatcher->dispatch();
 
-    if (!$request) {
+    $dispatcher->enableCORS('*', 'origin, content-type, accept, authorization');
+
+    $dispatched = $dispatcher->dispatchRequest();
+
+    if (!$dispatched) {
         header($_SERVER['SERVER_PROTOCOL'] . ' 400 Bad request');
         die("no dispatcher found for this request");
     }

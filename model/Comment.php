@@ -8,13 +8,15 @@ class Comment
     private $content;
     private $author;
     private $post;
+    private $created;
 
-    public function __construct($id = NULL, $content = NULL, User $author = NULL, Post $post = NULL)
+    public function __construct($id = NULL, $content = NULL, User $author = NULL, $created = NULL, Post $post = NULL)
     {
         $this->id = $id;
         $this->content = $content;
         $this->author = $author;
         $this->post = $post;
+        $this->created = $created;
     }
 
     public function getId()
@@ -50,6 +52,16 @@ class Comment
     public function setPost(Post $post)
     {
         $this->post = $post;
+    }
+
+    public function getCreated()
+    {
+        return $this->created;
+    }
+
+    public function setCreated($created)
+    {
+        $this->created = $created;
     }
 
     public function validateBeforeCreate()

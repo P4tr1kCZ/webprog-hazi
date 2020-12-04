@@ -44,7 +44,7 @@ $view->setVariable("title", "Posts");
                 </div>
                 <div class="card-body">
                     <h5 class="card-title"><a href="index.php?controller=posts&amp;action=view&amp;id=<?= $post->getId() ?>"><?= htmlentities($post->getTitle()) ?></a></h5>
-                    <h6 class="card-subtitle mb-2 text-muted">dátum</h6>
+                    <h6 class="card-subtitle mb-2 text-muted"><?= htmlentities($post->getCreated()) ?></h6>
                     <p class="card-text"><?= $post->getContent() ?></p>
                 </div>
             </div>

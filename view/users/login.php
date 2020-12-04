@@ -11,7 +11,7 @@ $errors = $view->getVariable("errors");
     <div class="row d-flex" style="justify-content: center;">
         <div class="col-4">
             <h1 style="text-align: center;">Login</h1>
-            <form id="idForm" method="POST">
+            <form id="idForm" action="index.php?controller=users&amp;action=login" method="POST">
                 <div class="form-group">
                     <label for="username">Username</label>
                     <input class="form-control" id="username" type="text" name="username">
@@ -21,7 +21,7 @@ $errors = $view->getVariable("errors");
                     <input class="form-control" id="password" type="password" name="password">
                 </div>
                 <div style="text-align: center;">
-                    <button type="button" onclick="myFunction()" class="btn btn-primary">Login</button>
+                    <button type="submit" class="btn btn-primary">Login</button>
                     <p style="margin-top: 20px;">Not user?&nbsp;<a href="index.php?controller=users&amp;action=register">Register here!</a></p>
                 </div>
             </form>

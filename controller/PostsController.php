@@ -55,11 +55,12 @@ class PostsController extends ControllerBase
             $post->setTitle($_POST["title"]);
             $post->setContent($_POST["content"]);
             $post->setAuthor($this->currentUser);
+            $post->setCreated(date('Y-m-d H:i:s'));
 
             try {
                 $post->validateBeforeCreate();
                 $this->dbPosts->insert($post);
-                $this->view->setFlash(sprintf("Post \"%s\" successfully added."), $post->getTitle());
+                //$this->view->setFlash(sprintf("Post \"%s\" successfully added."), $post->getTitle());
                 $this->view->redirect("posts", "index");
             } catch (ValidationException $ex) {
                 $errors = $ex->getErrors();
@@ -120,7 +121,7 @@ class PostsController extends ControllerBase
         }
 
         $postid = $_REQUEST["id"];
-        $post = $this->postMapper->findById($postid);
+        $post = $this->dbPosts->findById($postid);
 
         if ($post == NULL) {
             throw new Exception("no such post with id: " . $postid);

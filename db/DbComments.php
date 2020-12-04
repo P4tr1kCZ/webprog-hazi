@@ -14,8 +14,8 @@ class DbComments
 
     public function insert(Comment $comment)
     {
-        $query = $this->db->prepare("INSERT INTO comments(content, author, post) values (?,?,?)");
-        $query->execute(array($comment->getContent(), $comment->getAuthor()->getUsername(), $comment->getPost()->getId()));
+        $query = $this->db->prepare("INSERT INTO comments(content, author, post, created) values (?,?,?,?)");
+        $query->execute(array($comment->getContent(), $comment->getAuthor()->getUsername(), $comment->getPost()->getId(), $comment->getCreated()));
         return $this->db->lastInsertId();
     }
 }

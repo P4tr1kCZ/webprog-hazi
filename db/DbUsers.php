@@ -13,8 +13,8 @@ class DbUsers
 
     public function insert($user)
     {
-        $query = $this->db->prepare("INSERT INTO users values (?,?)");
-        $query->execute(array($user->getUsername(), $user->getPassword()));
+        $query = $this->db->prepare("INSERT INTO users values (?,?,?)");
+        $query->execute(array($user->getUsername(), password_hash($user->getPassword(), PASSWORD_BCRYPT), 'USER'));
     }
 
     public function usernameExists($username)
@@ -29,10 +29,12 @@ class DbUsers
 
     public function isValidUser($username, $password)
     {
-        $query = $this->db->prepare("SELECT count(username) FROM users where username=? and password=?");
-        $query->execute(array($username, $password));
+        $query = $this->db->prepare("SELECT username,password FROM users where username=:username");
+        $query->bindParam(':username', $username);
+        $query->execute();
+        $results = $query->fetch(PDO::FETCH_ASSOC);
 
-        if ($query->fetchColumn() > 0) {
+        if (count($results) > 0 && password_verify($password, $results['password'])) {
             return true;
         }
     }

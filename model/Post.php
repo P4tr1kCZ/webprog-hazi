@@ -9,12 +9,14 @@ class Post
     private $content;
     private $author;
     private $comments;
+    private $created;
 
-    public function __construct($id = NULL, $title = NULL, $content = NULL, User $author = NULL, array $comments = NULL)
+    public function __construct($id = NULL, $title = NULL, $content = NULL, $created = NULL, User $author = NULL, array $comments = NULL)
     {
         $this->id = $id;
         $this->title = $title;
         $this->content = $content;
+        $this->created = $created;
         $this->author = $author;
         $this->comments = $comments;
     }
@@ -62,6 +64,16 @@ class Post
     public function setComments(array $comments)
     {
         $this->comments = $comments;
+    }
+
+    public function getCreated()
+    {
+        return $this->created;
+    }
+
+    public function setCreated($created)
+    {
+        $this->created = $created;
     }
 
     public function validateBeforeCreate()
