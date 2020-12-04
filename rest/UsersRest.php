@@ -15,6 +15,24 @@ class UsersRest extends Rest
         $this->dbUsers = new DbUsers();
     }
 
+    public function getAll()
+    {
+        $users = $this->dbUsers->findAll();
+        $users_array = array();
+        $i = 1;
+        foreach ($users as $user) {
+            array_push($users_array, array(
+                "id" => $i++,
+                "username" => $user->getUsername(),
+                "role" => $user->getRole(),
+            ));
+        }
+
+        header($_SERVER['SERVER_PROTOCOL'] . ' 200 Ok');
+        header('Content-Type: application/json');
+        echo (json_encode($users_array));
+    }
+
     public function postUser($data)
     {
         $user = new User($data->username, $data->password);
@@ -45,5 +63,6 @@ class UsersRest extends Rest
 
 $usersRest = new UsersRest();
 URIDispatcher::getInstance()
+    ->map("GET",    "/users", array($usersRest, "getAll"))
     ->map("GET",    "/users/$1", array($usersRest, "login"))
     ->map("POST", "/users", array($usersRest, "postUser"));

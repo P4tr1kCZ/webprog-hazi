@@ -43,7 +43,7 @@ class UsersController extends ControllerBase
         if (isset($_POST["username"])) {
             $user->setUsername($_POST["username"]);
             $user->setPassword($_POST["password"]);
-
+            $user->setRole("USER");
 
             try {
 

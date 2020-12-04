@@ -1,6 +1,7 @@
 <?php
 
 require_once(__DIR__ . "/PDOConnection.php");
+require_once(__DIR__ . "/../model/User.php");
 
 class DbUsers
 {
@@ -11,10 +12,24 @@ class DbUsers
         $this->db = PDOConnection::getInstance();
     }
 
+    public function findAll()
+    {
+        $query = $this->db->query("SELECT username, role FROM users");
+        $users_db = $query->fetchAll(PDO::FETCH_ASSOC);
+
+        $users = array();
+
+        foreach ($users_db as $user) {
+            array_push($users, new User($user["username"], "", $user["role"]));
+        }
+
+        return $users;
+    }
+
     public function insert($user)
     {
         $query = $this->db->prepare("INSERT INTO users values (?,?,?)");
-        $query->execute(array($user->getUsername(), password_hash($user->getPassword(), PASSWORD_BCRYPT), 'USER'));
+        $query->execute(array($user->getUsername(), password_hash($user->getPassword(), PASSWORD_BCRYPT), $user->getRole()));
     }
 
     public function usernameExists($username)

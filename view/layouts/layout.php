@@ -23,7 +23,7 @@ $currentuser = $view->getVariable("currentuser");
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
 
-            <a class="navbar-brand" href="#">Kitalált Kft.</a>
+            <a class="navbar-brand" href="/">Kitalált Kft.</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_nav">
                 <span class="navbar-toggler-icon"></span>
             </button>
