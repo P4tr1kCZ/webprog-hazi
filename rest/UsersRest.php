@@ -42,3 +42,8 @@ class UsersRest extends Rest
         }
     }
 }
+
+$usersRest = new UsersRest();
+URIDispatcher::getInstance()
+    ->map("GET",    "/user/$1", array($usersRest, "login"))
+    ->map("POST", "/user", array($usersRest, "postUser"));
