@@ -5,7 +5,7 @@ require_once(__DIR__ . "/../../utils/ViewManager.php");
 $view = ViewManager::getInstance();
 
 $post = $view->getVariable("post");
-$currentuser = $view->getVariable("currentusername");
+$currentuser = $view->getVariable("currentuser");
 $newcomment = $view->getVariable("comment");
 $errors = $view->getVariable("errors");
 

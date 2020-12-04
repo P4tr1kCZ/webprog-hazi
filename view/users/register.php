@@ -7,13 +7,30 @@ $errors = $view->getVariable("errors");
 $user = $view->getVariable("user");
 $view->setVariable("title", "Register");
 ?>
-<h1>Register</h1>
-<form action="index.php?controller=users&amp;action=register" method="POST">
-    Username: <input type="text" name="username" value="<?= $user->getUsername() ?>">
-    <?= isset($errors["username"]) ? $errors["username"] : "" ?><br>
 
-    Password: <input type="password" name="password" value="">
-    <?= isset($errors[""]) ? $errors["password"] : "" ?><br>
+<div class="container">
+    <div class="row d-flex" style="justify-content: center;">
+        <div class="col-4">
+            <h1 style="text-align: center;">Register</h1>
+            <form action="index.php?controller=users&amp;action=register" method="POST">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input class="form-control" id="username" type="text" name="username" value="<?= $user->getUsername() ?>" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input class="form-control" id="password" type="password" name="password" value="" required>
+                </div>
+                <div style="text-align: center;">
+                    <button type="submit" class="btn btn-primary">Register</button>
+                    <p style="margin-top: 20px;">Already registered?&nbsp;<a href="index.php?controller=users&amp;action=login">Login here!</a></p>
+                </div>
+            </form>
+            <?= isset($errors["general"]) ? $errors["general"] : "" ?>
+        </div>
+    </div>
+</div>
 
-    <input type="submit" value="<?= "Register" ?>">
-</form>
+<?php $view->moveToFragment("css"); ?>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+<?php $view->moveToDefaultFragment(); ?>

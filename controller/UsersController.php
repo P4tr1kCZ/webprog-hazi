@@ -12,7 +12,6 @@ class UsersController extends ControllerBase
     {
         parent::__construct();
         $this->dbUsers = new DbUsers();
-        $this->view->setLayout("welcome");
     }
 
     public function login()
