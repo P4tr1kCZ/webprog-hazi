@@ -14,7 +14,7 @@ $view->setVariable("title", "View Post");
 ?>
 
 
-<div class="container">
+<div class="container" style="margin-top: 50px;">
     <div class="card col-12" style="padding: 0;">
         <div class="card-header">
             <div class="row" style="justify-content: space-between;">

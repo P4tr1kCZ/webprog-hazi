@@ -10,7 +10,7 @@ $view->setVariable("title", "Register");
 
 <div class="container">
     <div class="row d-flex" style="justify-content: center;">
-        <div class="col-4">
+        <div class="col-8 col-sm-8 col-md-6 col-lg-4">
             <h1 style="text-align: center;">Register</h1>
             <form action="index.php?controller=users&amp;action=register" method="POST">
                 <div class="form-group">

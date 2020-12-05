@@ -70,7 +70,7 @@ class DbUsers
         $query->execute();
         $results = $query->fetch(PDO::FETCH_ASSOC);
 
-        if (count($results) > 0 && password_verify($password, $results['password'])) {
+        if ($results && count($results) > 0 && password_verify($password, $results['password'])) {
             return true;
         }
     }

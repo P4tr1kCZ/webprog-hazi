@@ -13,7 +13,7 @@ $view->setVariable("title", "Edit Post");
 
 <div class="container">
     <div class="row d-flex" style="justify-content: center;">
-        <div class="col-4">
+        <div class="col-8 col-sm-8 col-md-6 col-lg-4">
             <h1 style="text-align: center;">Modify post</h1>
             <form action="index.php?controller=posts&amp;action=edit" method="POST">
                 <div class="form-group">

@@ -48,10 +48,6 @@ $currentuser = $view->getVariable("currentuser");
     </header>
 
     <main class="container">
-        <div id="flash">
-            <?= $view->popFlash() ?>
-        </div>
-
         <?= $view->getFragment(ViewManager::DEFAULT_FRAGMENT) ?>
     </main>
 

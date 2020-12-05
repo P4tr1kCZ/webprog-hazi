@@ -9,7 +9,7 @@ $errors = $view->getVariable("errors");
 
 <div class="container">
     <div class="row d-flex" style="justify-content: center;">
-        <div class="col-4">
+        <div class="col-8 col-sm-8 col-md-6 col-lg-4">
             <h1 style="text-align: center;">Login</h1>
             <form id="idForm" action="index.php?controller=users&amp;action=login" method="POST">
                 <div class="form-group">
@@ -22,7 +22,7 @@ $errors = $view->getVariable("errors");
                 </div>
                 <div style="text-align: center;">
                     <button type="submit" class="btn btn-primary">Login</button>
-                    <p style="margin-top: 20px;">Not user?&nbsp;<a href="index.php?controller=users&amp;action=register">Register here!</a></p>
+                    <p style="margin-top: 20px;">Don't have account?&nbsp;<a href="index.php?controller=users&amp;action=register">Register here!</a></p>
                 </div>
             </form>
             <p style="text-align: center; color:red"><?= isset($errors["general"]) ? $errors["general"] : "" ?></p>

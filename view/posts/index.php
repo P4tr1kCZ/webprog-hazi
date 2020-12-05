@@ -16,13 +16,16 @@ $view->setVariable("title", "Posts");
             <button type="submit" class="btn btn-primary">Create post</button>
         </form>
     <?php endif; ?>
+    <?php if (count($posts) == 0) : ?>
+        <div class="col-12" style="text-align: center;"><em>Nincsenek megjeleníthető bejegyzések.</em></div>
+    <?php endif; ?>
     <?php foreach ($posts as $post) : ?>
         <div class="card col-12" style="padding: 0;">
             <div class="card-header">
                 <div class="row" style="justify-content: space-between;">
                     <div>
                         <?php
-                        if (isset($_SESSION["currentuser"]) && ($_SESSION["currentuser"] == $post->getAuthor()->getUsername()) || $_SESSION["role"] == "ADMIN") : ?>
+                        if (isset($_SESSION["currentuser"]) && isset($_SESSION["role"]) && ($_SESSION["currentuser"] == $post->getAuthor()->getUsername() || $_SESSION["role"] == "ADMIN")) : ?>
                             <form method="POST" action="index.php?controller=posts&amp;action=delete" id="delete_post_<?= $post->getId(); ?>" style="display: inline">
                                 <input type="hidden" name="id" value="<?= $post->getId() ?>">
                                 <a href="index.php?controller=posts&amp;action=edit&amp;id=<?= $post->getId() ?>">Edit</a>
