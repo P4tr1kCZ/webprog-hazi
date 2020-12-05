@@ -78,7 +78,6 @@ $( "#rectanglebtn" ).click(function() {
 
 function onCircleAdd() {
     const color = document.getElementById('circle').value;
-    console.log(color);
     const r = randomIntFromInterval(45, 100);
     const circle = new Circle(color, r);
     var canvas = document.getElementById('canvas');
@@ -93,7 +92,6 @@ function onCircleAdd() {
 
 function onRectangleAdd() {
     const color = document.getElementById('rectangle').value;
-    console.log(color);
     const a = randomIntFromInterval(30, 150);
     const b = randomIntFromInterval(30, 150);
     const rect = new Rectangle(color, a, b);

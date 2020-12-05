@@ -55,7 +55,7 @@ class PostsController extends ControllerBase
             $post->setTitle($_POST["title"]);
             $post->setContent($_POST["content"]);
             $post->setAuthor($this->currentUser);
-            $post->setCreated('Y-m-d H:i:s');
+            $post->setCreated(date('Y-m-d H:i:s'));
 
             try {
                 $post->validateBeforeCreate();
