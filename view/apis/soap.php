@@ -13,8 +13,7 @@ $xml = simplexml_load_string($user);
 ?>
 
 <div class="container">
-    <h1>SOAP</h1>
-    <div class="row">
+    <div class="row" style="margin-top: 50px;">
         <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
             <div class="card" style="display:flex;">
                 <div class="card-body">

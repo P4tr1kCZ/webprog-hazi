@@ -40,11 +40,11 @@ class CommentsController extends ControllerBase
             $comment->setContent($_POST["content"]);
             $comment->setAuthor($this->currentUser);
             $comment->setPost($post);
+            $comment->setCreated('Y-m-d H:i:s');
 
             try {
                 $comment->validateBeforeCreate();
                 $this->dbComments->insert($comment);
-                $this->view->setFlash("Comment \"" . $post->getTitle() . "\" successfully added.");
                 $this->view->redirect("posts", "view", "id=" . $post->getId());
             } catch (ValidationException $ex) {
                 $errors = $ex->getErrors();

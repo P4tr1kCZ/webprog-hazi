@@ -8,7 +8,7 @@ $errors = $view->getVariable("errors");
 ?>
 
 <div class="container">
-    <h1>REST</h1>
+    <h1>REST Users list</h1>
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
             <table class="table">

@@ -90,7 +90,7 @@ class Post
         }
 
         if (sizeof($errors) > 0) {
-            throw new ValidationException($errors, "post is not valid");
+            throw new ValidationException($errors, "Post is not valid.");
         }
     }
 
@@ -110,7 +110,7 @@ class Post
             }
         }
         if (sizeof($errors) > 0) {
-            throw new ValidationException($errors, "post is not valid");
+            throw new ValidationException($errors, "Post is not valid.");
         }
     }
 }

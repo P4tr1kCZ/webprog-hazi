@@ -55,12 +55,11 @@ class PostsController extends ControllerBase
             $post->setTitle($_POST["title"]);
             $post->setContent($_POST["content"]);
             $post->setAuthor($this->currentUser);
-            $post->setCreated(date('Y-m-d H:i:s'));
+            $post->setCreated('Y-m-d H:i:s');
 
             try {
                 $post->validateBeforeCreate();
                 $this->dbPosts->insert($post);
-                //$this->view->setFlash(sprintf("Post \"%s\" successfully added."), $post->getTitle());
                 $this->view->redirect("posts", "index");
             } catch (ValidationException $ex) {
                 $errors = $ex->getErrors();
@@ -99,7 +98,6 @@ class PostsController extends ControllerBase
             try {
                 $post->validateBeforeUpdate();
                 $this->dbPosts->update($post);
-                $this->view->setFlash(sprintf("Post \"%s\" successfully updated."), $post->getTitle());
                 $this->view->redirect("posts", "index");
             } catch (ValidationException $ex) {
                 $errors = $ex->getErrors();
@@ -132,7 +130,6 @@ class PostsController extends ControllerBase
         }
 
         $this->dbPosts->delete($post);
-        $this->view->setFlash(sprintf("Post \"%s\" successfully deleted."), $post->getTitle());
         $this->view->redirect("posts", "index");
     }
 }

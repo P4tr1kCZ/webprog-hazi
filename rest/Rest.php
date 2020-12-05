@@ -27,7 +27,7 @@ class Rest
                 header($_SERVER['SERVER_PROTOCOL'] . ' 401 Unauthorized');
                 header('WWW-Authenticate: Basic realm="Rest API of MVCBLOG"');
 
-                die('The username/password is not valid');
+                die('The username/password is not valid.');
             }
         }
     }

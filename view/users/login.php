@@ -25,7 +25,7 @@ $errors = $view->getVariable("errors");
                     <p style="margin-top: 20px;">Not user?&nbsp;<a href="index.php?controller=users&amp;action=register">Register here!</a></p>
                 </div>
             </form>
-            <?= isset($errors["general"]) ? $errors["general"] : "" ?>
+            <p style="text-align: center; color:red"><?= isset($errors["general"]) ? $errors["general"] : "" ?></p>
         </div>
     </div>
 </div>

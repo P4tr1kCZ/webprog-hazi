@@ -58,7 +58,7 @@ class User
             $errors["role"] = "You can register only USER type accounts";
         }
         if (sizeof($errors) > 0) {
-            throw new ValidationException($errors, "user is not valid");
+            throw new ValidationException($errors, "User is not valid.");
         }
     }
 }

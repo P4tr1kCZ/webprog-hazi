@@ -7,19 +7,28 @@ $view = ViewManager::getInstance();
 $post = $view->getVariable("post");
 $errors = $view->getVariable("errors");
 
-$view->setVariable("title", "Edit Post");
+$view->setVariable("title", "Create Post");
 
 ?>
 
-<h1>Create post"</h1>
-<form action="index.php?controller=posts&amp;action=add" method="POST">
-    Title:<input type="text" name="title" value="<?= $post->getTitle() ?>">
-    <?= isset($errors["title"]) ? $errors["title"] : "" ?><br>
-
-    Contents: <br>
-    <textarea name="content" rows="4" cols="50">
-    <?= htmlentities($post->getContent()) ?></textarea>
-    <?= isset($errors["content"]) ? $errors["content"] : "" ?><br>
-
-    <input type="submit" name="submit" value="submit">
-</form>
+<div class="container">
+    <div class="row d-flex" style="justify-content: center;">
+        <div class="col-4">
+            <h1 style="text-align: center;">Create post</h1>
+            <form action="index.php?controller=posts&amp;action=add" method="POST">
+                <div class="form-group">
+                    <label for="title">Title</label>
+                    <input class="form-control" id="title" type="text" name="title">
+                </div>
+                <div class="form-group">
+                    <label for="content">Content</label>
+                    <textarea class="form-control" id="content" name="content" rows="10"></textarea>
+                </div>
+                <div style="text-align: center;">
+                    <input class="btn btn-primary" type="submit" name="submit" value="Create Post">
+                </div>
+            </form>
+            <?= isset($errors["general"]) ? $errors["general"] : "" ?>
+        </div>
+    </div>
+</div>

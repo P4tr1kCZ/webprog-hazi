@@ -59,10 +59,9 @@ class DbUsers
     {
         $query = $this->db->prepare("SELECT username,password FROM users where username=:username");
         $query->bindParam(':username', $username);
-        $query->execute();
         $results = $query->fetch(PDO::FETCH_ASSOC);
 
-        if (count($results) > 0 && password_verify($password, $results['password'])) {
+        if ($results > 0 && password_verify($password, $results['password'])) {
             return true;
         }
     }

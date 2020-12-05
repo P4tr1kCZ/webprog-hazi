@@ -10,7 +10,7 @@ class Comment
     private $post;
     private $created;
 
-    public function __construct($id = NULL, $content = NULL, User $author = NULL, $created = NULL, Post $post = NULL)
+    public function __construct($id = NULL, $content = NULL, $created = NULL, User $author = NULL, Post $post = NULL)
     {
         $this->id = $id;
         $this->content = $content;
@@ -79,7 +79,7 @@ class Comment
         }
 
         if (sizeof($errors) > 0) {
-            throw new ValidationException($errors, "comment is not valid");
+            throw new ValidationException($errors, "Comment is not valid.");
         }
     }
 }

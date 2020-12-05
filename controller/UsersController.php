@@ -28,7 +28,7 @@ class UsersController extends ControllerBase
                 echo $_POST["username"];
             } else {
                 $errors = array();
-                $errors["general"] = "Username is not valid";
+                $errors["general"] = "Username is not valid.";
                 $this->view->setVariable("errors", $errors);
             }
         }
@@ -51,7 +51,6 @@ class UsersController extends ControllerBase
 
                 if (!$this->dbUsers->usernameExists($_POST["username"])) {
                     $this->dbUsers->insert($user);
-                    $this->view->setFlash("Username " . $user->getUsername() . " successfully added. Please login now");
                     $this->view->redirect("users", "login");
                 } else {
                     $errors = array();

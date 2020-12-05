@@ -26,7 +26,8 @@ $view->setVariable("title", "Register");
                     <p style="margin-top: 20px;">Already registered?&nbsp;<a href="index.php?controller=users&amp;action=login">Login here!</a></p>
                 </div>
             </form>
-            <?= isset($errors["general"]) ? $errors["general"] : "" ?>
+            <p style="text-align: center; color:red"><?= isset($errors["general"]) ? $errors["general"] : "" ?></p>
+            <p style="text-align: center; color:red"><?= isset($errors["username"]) ? $errors["username"] : "" ?></p>
         </div>
     </div>
 </div>
