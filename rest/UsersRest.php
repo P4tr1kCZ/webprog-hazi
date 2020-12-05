@@ -3,7 +3,7 @@
 require_once(__DIR__ . "/Rest.php");
 require_once(__DIR__ . "/../model/User.php");
 require_once(__DIR__ . "/../db/DbUsers.php");
-require_once(__DIR__ . "/../utils/ValidationException..php");
+require_once(__DIR__ . "/../utils/ValidationException.php");
 
 class UsersRest extends Rest
 {

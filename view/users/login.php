@@ -22,7 +22,11 @@ $errors = $view->getVariable("errors");
                 </div>
                 <div style="text-align: center;">
                     <button type="submit" class="btn btn-primary">Login</button>
-                    <p style="margin-top: 20px;">Don't have account?&nbsp;<a href="index.php?controller=users&amp;action=register">Register here!</a></p>
+                    <p style="margin-top: 20px;">Don't have account?&nbsp;
+                        <a href="index.php?controller=users&amp;action=register">
+                            Register here!
+                        </a>
+                    </p>
                 </div>
             </form>
             <p style="text-align: center; color:red"><?= isset($errors["general"]) ? $errors["general"] : "" ?></p>

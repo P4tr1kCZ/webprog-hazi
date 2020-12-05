@@ -28,7 +28,6 @@ class UsersController extends ControllerBase
                 $this->view->setVariable("errors", $errors);
             }
         }
-
         $this->view->render("users", "login");
     }
 
