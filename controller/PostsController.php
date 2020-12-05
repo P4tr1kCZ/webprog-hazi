@@ -125,7 +125,7 @@ class PostsController extends ControllerBase
             throw new Exception("no such post with id: " . $postid);
         }
 
-        if ($post->getAuthor() != $this->currentUser) {
+        if ($_SESSION["role"] != "ADMIN" && $post->getAuthor() != $this->currentUser) {
             throw new Exception("Post author is not the logged user");
         }
 

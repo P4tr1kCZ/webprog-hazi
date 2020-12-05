@@ -14,16 +14,12 @@ class UsersController extends ControllerBase
         $this->dbUsers = new DbUsers();
     }
 
-    public function index()
-    {
-        $this->view->render("users", "index");
-    }
-
     public function login()
     {
         if (isset($_POST["username"])) {
             if ($this->dbUsers->isValidUser($_POST["username"], $_POST["password"])) {
                 $_SESSION["currentuser"] = $_POST["username"];
+                $_SESSION["role"] = $this->dbUsers->findRoleByName($_POST["username"]);
                 $this->view->redirect("posts", "index");
                 echo $_POST["username"];
             } else {

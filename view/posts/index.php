@@ -20,10 +20,9 @@ $view->setVariable("title", "Posts");
         <div class="card col-12" style="padding: 0;">
             <div class="card-header">
                 <div class="row" style="justify-content: space-between;">
-                    <div><?= $post->getAuthor()->getUsername() ?></div>
                     <div>
                         <?php
-                        if (isset($_SESSION["currentuser"]) && $_SESSION["currentuser"] == $post->getAuthor()->getUsername()) : ?>
+                        if (isset($_SESSION["currentuser"]) && ($_SESSION["currentuser"] == $post->getAuthor()->getUsername()) || $_SESSION["role"] == "ADMIN") : ?>
                             <form method="POST" action="index.php?controller=posts&amp;action=delete" id="delete_post_<?= $post->getId(); ?>" style="display: inline">
                                 <input type="hidden" name="id" value="<?= $post->getId() ?>">
                                 <a href="index.php?controller=posts&amp;action=edit&amp;id=<?= $post->getId() ?>">Edit</a>
@@ -38,8 +37,8 @@ $view->setVariable("title", "Posts");
                 </div>
                 <div class="card-body">
                     <h5 class="card-title"><a href="index.php?controller=posts&amp;action=view&amp;id=<?= $post->getId() ?>"><?= htmlentities($post->getTitle()) ?></a></h5>
-                    <h6 class="card-subtitle mb-2 text-muted"><?= htmlentities($post->getCreated()) ?></h6>
-                    <p class="card-text"><?= $post->getContent() ?></p>
+                    <em><?= sprintf("by %s at %s", $post->getAuthor()->getUsername(), $post->getCreated()) ?></em>
+                    <textarea class="form-control" name="content" rows="2" readonly><?= $post->getContent() ?></textarea>
                 </div>
             </div>
         </div>

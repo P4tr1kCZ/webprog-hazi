@@ -39,6 +39,14 @@ class DbUsers
         }
     }
 
+    public function findRoleByName($username)
+    {
+        $query = $this->db->prepare("SELECT role FROM users WHERE username=?");
+        $query->execute(array($username));
+        $user = $query->fetch(PDO::FETCH_ASSOC);
+        return $user["role"];
+    }
+
     public function insert($user)
     {
         $query = $this->db->prepare("INSERT INTO users values (?,?,?)");
@@ -59,9 +67,10 @@ class DbUsers
     {
         $query = $this->db->prepare("SELECT username,password FROM users where username=:username");
         $query->bindParam(':username', $username);
+        $query->execute();
         $results = $query->fetch(PDO::FETCH_ASSOC);
 
-        if ($results > 0 && password_verify($password, $results['password'])) {
+        if (count($results) > 0 && password_verify($password, $results['password'])) {
             return true;
         }
     }

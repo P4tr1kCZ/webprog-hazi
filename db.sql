@@ -42,10 +42,9 @@ insert into users (username, password, role) VALUES ('admin', '$2y$10$gd6aRrNDHK
 INSERT INTO menus
   (id, name, parentid, controller, action)
 VALUES
-  (1, "Posts", NULL, "posts", "index"),
-  (2, "Users", NULL, "users", "index"),    
-  (3, "API", NULL, "api", "index"), 
-  (4, "REST", 3, "api", "rest"),
-  (5, "SOAP", 3, "api", "soap"),
-  (6, "Drawings", NULL, "oop", "index"),
-  (7, "Logout", NULL, "users", "logout");
+  (1, "Posts", NULL, "posts", "index"), 
+  (2, "API", NULL, "api", "index"), 
+  (3, "REST", 2, "api", "rest"),
+  (4, "SOAP", 2, "api", "soap"),
+  (5, "Drawings", NULL, "oop", "index"),
+  (6, "Logout", NULL, "users", "logout");

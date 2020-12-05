@@ -18,7 +18,7 @@ $(document).ready(function() {
                             </li>`);
                         } else {
                             $('#dropdownlist').append(
-                                    $('<li>', {'class': 'dropdown-toggle dropdown-item'}).attr('id', 'multiple').append(
+                                    $('<li>', {'class': 'dropdown-toggle dropdown-item dropdown-menu'}).attr('id', 'multiple').append(
                                         $('<a>').html(element.name)
                                     )
                                 )
@@ -48,7 +48,8 @@ $(document).ready(function() {
 
     if ($(window).width() < 992) {
 	  	$('.dropdown-menu a').click(function(e){
-	  		e.preventDefault();
+              e.preventDefault();
+              console.log('asd');
 	        if($(this).next('.submenu').length){
 	        	$(this).next('.submenu').toggle();
 	        }
