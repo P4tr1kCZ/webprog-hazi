@@ -39,8 +39,8 @@ $view->setVariable("title", "View Post");
             <div>
                 <?php foreach ($post->getComments() as $comment) : ?>
                     <div class="row" style="align-items:baseline;">
-                        <div class="col-1" style="margin-top: 20px;"><?= sprintf("%s:", $comment->getAuthor()->getUsername()) ?></div>
-                        <div class="col form-group">
+                        <div class="col-3 col-sm-2 col-md-2 col-lg-2 col-xl-2" style="margin-top: 20px;"><?= sprintf("%s:", $comment->getAuthor()->getUsername()) ?></div>
+                        <div class="col-9 col-sm-10 col-md-10 col-lg-10 col-xl-10 form-group">
                             <textarea class="form-control" name="content" rows="2" readonly><?= $comment->getContent(); ?></textarea>
                         </div>
                     </div>
